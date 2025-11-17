@@ -68,17 +68,11 @@ jobs:
       - name: Deploy to server
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-          GPT_TOKEN: ${{ secrets.GPT_TOKEN }}
           SERVER_IP: ${{ secrets.SERVER_IP }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
-          T_INVEST_TOKEN: ${{ secrets.T_INVEST_TOKEN }}
-          T_INVEST_USER_ID: ${{ secrets.T_INVEST_USER_ID }}
         run: |
           cat > .env <<EOL
           BOT_TOKEN=$BOT_TOKEN
-          GPT_TOKEN=$GPT_TOKEN
-          T_INVEST_TOKEN=$T_INVEST_TOKEN
-          T_INVEST_USER_ID=$T_INVEST_USER_ID
           EOL
           ssh $SERVER_USER@$SERVER_IP << 'EOF'
             # Установка зависимостей (если их нет)
@@ -95,19 +89,19 @@ jobs:
             fi
 
             # Работа с репозиторием
-            if [ -d "Automating-route-selection" ]; then
-              cd Automating-route-selection
+            if [ -d "new_tg_bot" ]; then
+              cd new_tg_bot
               git pull origin main
             else
-              git clone https://github.com/Dema-koder/Automating-route-selection.git
-              cd Automating-route-selection
+              git clone https://github.com/Dema-koder/new_tg_bot.git
+              cd new_tg_bot
             fi
           EOF
           
-          scp .env $SERVER_USER@$SERVER_IP:~/Automating-route-selection/.env
+          scp .env $SERVER_USER@$SERVER_IP:~/new_tg_bot/.env
           
           ssh $SERVER_USER@$SERVER_IP << 'EOF'
-            cd ~/Automating-route-selection
+            cd ~/new_tg_bot
             sudo docker-compose down || true
             sudo docker-compose up -d --build
           EOF

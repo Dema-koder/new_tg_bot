@@ -1,8 +1,6 @@
 package org.example.project.service;
 
-import org.example.project.domain.Note;
 import org.example.project.domain.Users;
-import org.example.project.repository.NoteRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

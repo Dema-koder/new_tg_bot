@@ -34,16 +34,9 @@ services:
       SPRING_DATASOURCE_PASSWORD: secretpass
       SPRING_JPA_HIBERNATE_DDL-AUTO: update
       BOT_TOKEN: ${BOT_TOKEN}
-      GPT_TOKEN: ${GPT_TOKEN}
     ports:
       - "8080:8080"
     restart: unless-stopped
-
-  leetcode:
-    image: alfaarghya/alfa-leetcode-api:2.0.1
-    container_name: leetcode
-    ports:
-      - "3000:3000"
 
 volumes:
   postgres_data:
