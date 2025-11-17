@@ -6,4 +6,5 @@
 
     <include file="migrations/2025-04-15-initial-changelog.xml" relativeToChangelogFile="true"/>
     <include file="migrations/2025-05-11-add-stoncks-table.xml" relativeToChangelogFile="true"/>
+    <include file="migrations/2025-11-17-delete-old-tables.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
