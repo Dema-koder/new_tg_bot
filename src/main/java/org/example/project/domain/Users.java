@@ -18,7 +18,4 @@ public class Users {
     private Long id;
     private Long chatId;
     private String name;
-
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Note> notes = new ArrayList<>();
 }
