@@ -14,6 +14,4 @@ public class ApplicationConfig {
     String botName;
     @Value("${bot.token}")
     String botToken;
-    @Value("${gpt.token}")
-    String gptToken;
 }
