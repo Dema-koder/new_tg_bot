@@ -33,9 +33,11 @@ public class SaveDebtCommandImplHandler implements SaveDebtCommandHandler, Comma
         var debtType = userSessionService.getSession(chatId).getDebtType();
         var debt = new Debts();
         if (debtType) {
-            debt = debtRepository.getDebtByFromAndToIds(secondPerson.getId(), firstPerson.getId()).get();
-        } else {
             debt = debtRepository.getDebtByFromAndToIds(firstPerson.getId(), secondPerson.getId()).get();
+        } else {
+            String answer = "Пользователь " + firstPerson.getName() + " добавил ваш долг ему " + amount;
+            messageSender.sendMessage(secondPerson.getChatId(), answer);
+            debt = debtRepository.getDebtByFromAndToIds(secondPerson.getId(), firstPerson.getId()).get();
         }
         debt.setAmount(debt.getAmount().add(amount));
         debtRepository.save(debt);

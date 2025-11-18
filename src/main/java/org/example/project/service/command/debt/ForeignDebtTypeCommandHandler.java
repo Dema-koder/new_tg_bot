@@ -9,7 +9,6 @@ import org.example.project.service.command.CommandHandler;
 import org.example.project.service.state.DialogMode;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 
 @Slf4j
 @Component
