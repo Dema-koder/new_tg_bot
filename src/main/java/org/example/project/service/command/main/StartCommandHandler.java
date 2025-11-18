@@ -29,8 +29,9 @@ public class StartCommandHandler implements MainCommandHandler, CommandHandler {
         Users users = userService.getUserByChatId(chatId);
         String name = update.getMessage().getChat().getFirstName();
         if (users == null) {
-            userService.addUser(chatId, name);
+            var id = userService.addUser(chatId, name).getId();
             String answer = "Hi, " + name + ", nice to meet you!";
+            userService.addAllRelationshipsForUser(id);
             log.info("Replied to user {} and register him", name);
             messageSender.sendMessageWithKeyboard(chatId, answer, mainMenuKeyboard);
         } else {

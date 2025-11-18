@@ -18,11 +18,5 @@ services:
       timeout: 5s
       retries: 5
 
-  leetcode:
-    image: alfaarghya/alfa-leetcode-api:2.0.1
-    container_name: leetcode
-    ports:
-      - "3000:3000"
-
 volumes:
   postgres_data:

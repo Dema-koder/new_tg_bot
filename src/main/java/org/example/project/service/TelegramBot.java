@@ -39,7 +39,6 @@ public class TelegramBot extends TelegramLongPollingBot{
         this.executorService = Executors.newFixedThreadPool(10);
         List<BotCommand> listOfCommand = new ArrayList<>();
         listOfCommand.add(new BotCommand("/start", "register"));
-        listOfCommand.add(new BotCommand("/unregister", "delete my data"));
         try {
             this.execute(new SetMyCommands(listOfCommand, new BotCommandScopeDefault(), null));
         } catch (TelegramApiException e) {

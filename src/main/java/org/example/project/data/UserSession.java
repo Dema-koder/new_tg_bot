@@ -13,6 +13,6 @@ import java.util.ArrayList;
 @NoArgsConstructor
 public class UserSession {
     private DialogMode dialogMode;
-    private String gptVersion;
-    private ArrayList<Message> messageHistory;
+    private String anotherPerson;
+    private Boolean debtType; // true - я должен, false - мне должны
 }
