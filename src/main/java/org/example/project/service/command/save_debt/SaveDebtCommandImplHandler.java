@@ -64,6 +64,6 @@ public class SaveDebtCommandImplHandler implements SaveDebtCommandHandler, Comma
 
     @Override
     public boolean canHandle(String command) {
-        return command.charAt(0) >= '0' && command.charAt(0) <= '9';
+        return !(command.charAt(0) >= '0' && command.charAt(0) <= '9');
     }
 }
