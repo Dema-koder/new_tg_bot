@@ -3,6 +3,7 @@ package org.example.project.service.command.my_debt;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.project.service.TelegramMessageSender;
+import org.example.project.service.UserService;
 import org.example.project.service.UserSessionService;
 import org.example.project.service.command.CommandHandler;
 import org.example.project.service.state.DialogMode;
@@ -14,6 +15,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @RequiredArgsConstructor
 public class MyDebtCommandImplHandler implements MyDebtCommandHandler, CommandHandler {
 
+    private final UserService userService;
     private final UserSessionService userSessionService;
     private final TelegramMessageSender messageSender;
 
@@ -28,6 +30,6 @@ public class MyDebtCommandImplHandler implements MyDebtCommandHandler, CommandHa
 
     @Override
     public boolean canHandle(String command) {
-        return true;
+        return userService.isUserExist(command);
     }
 }

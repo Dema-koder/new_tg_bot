@@ -19,8 +19,11 @@ public class BotKeyboardConfig {
         KeyboardRow row1 = new KeyboardRow();
         row1.add(new KeyboardButton("Новый долг"));
         row1.add(new KeyboardButton("Расчет"));
-
         keyboard.add(row1);
+
+        KeyboardRow row2 = new KeyboardRow();
+        row2.add(new KeyboardButton("История"));
+        keyboard.add(row2);
 
         keyboardMarkup.setKeyboard(keyboard);
         keyboardMarkup.setResizeKeyboard(true);

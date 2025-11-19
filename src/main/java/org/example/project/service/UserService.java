@@ -75,6 +75,14 @@ public class UserService {
         return keyboardMarkup;
     }
 
+    public boolean isUserExist(String name) {
+        var users = userRepository.getAllUsers();
+        for (var user: users)
+            if (user.getName().equals(name))
+                return true;
+        return false;
+    }
+
     public Users getUserByChatId(Long chatId) {
         return userRepository.findByChatId(chatId);
     }

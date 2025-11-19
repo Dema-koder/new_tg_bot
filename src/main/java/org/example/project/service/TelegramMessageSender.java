@@ -84,28 +84,4 @@ public class TelegramMessageSender implements MessageSender{
 
     }
 
-    public void sendPlotToUserWithKeyboard(Long chatId, String htmlResponse, ReplyKeyboardMarkup keyboard) {
-        try {
-            String base64Prefix = "data:image/png;base64,";
-            int startIndex = htmlResponse.indexOf(base64Prefix) + base64Prefix.length();
-            int endIndex = htmlResponse.indexOf("\"", startIndex);
-            String base64Image = htmlResponse.substring(startIndex, endIndex);
-
-            byte[] imageBytes = Base64.getDecoder().decode(base64Image);
-
-            InputFile photo = new InputFile(new ByteArrayInputStream(imageBytes), "plot.png");
-
-            SendPhoto sendPhoto = SendPhoto.builder()
-                    .chatId(chatId.toString())
-                    .replyMarkup(keyboard)
-                    .photo(photo)
-                    .caption("График изменения портфеля")
-                    .build();
-
-            bot.execute(sendPhoto);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
