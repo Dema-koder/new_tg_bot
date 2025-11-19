@@ -53,7 +53,7 @@ public class DebtService {
                                 for (var debt3 : debts)
                                     if (Objects.equals(debt3.getFrom().getId(), debt1.getFrom().getId()) &&
                                             Objects.equals(debt3.getTo().getId(), debt2.getTo().getId())) {
-                                        debt3.setAmount(amount1);
+                                        debt3.setAmount(amount1.add(debt3.getAmount()));
                                         break;
                                     }
                             } else if (amount1.compareTo(amount2) > 0) {
@@ -62,7 +62,7 @@ public class DebtService {
                                 for (var debt3 : debts)
                                     if (Objects.equals(debt3.getFrom().getId(), debt1.getFrom().getId()) &&
                                             Objects.equals(debt3.getTo().getId(), debt2.getTo().getId())) {
-                                        debt3.setAmount(amount2);
+                                        debt3.setAmount(amount2.add(debt3.getAmount()));
                                         break;
                                     }
                             }
